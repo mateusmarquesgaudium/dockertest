@@ -18,8 +18,8 @@ jobs:
       - name: Fazer login no Docker Hub
         uses: docker/login-action@v3
         with:
-          username: "mateusmarques@gaudium.com.br"
-          password: "Cordao#123"
+          username: mateusmarques@gaudium.com.br
+          password: Cordao#123
 
       - name: Definir variáveis de versão
         id: vars
