@@ -21,10 +21,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Extract Tag Name
-        id: extract_tag
-        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-
       - name: Construir e publicar imagem Docker
         uses: docker/build-push-action@v5
         with:
@@ -33,7 +29,7 @@ jobs:
           push: true
           tags: |
             mateusmarquesgaudium/dockertest:latest
-            mateusmarquesgaudium/dockertest:${{ env.TAG_NAME }}
+            mateusmarquesgaudium/dockertest:${GITHUB_SHA}
 
       - name: Log out from Docker Hub
         run: docker logout
