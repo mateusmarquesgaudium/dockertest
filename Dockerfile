@@ -1,12 +1,5 @@
-# Use the Amazon Linux 2 image
-FROM amazonlinux:2
-
-# Update the base image and install required tools
-RUN yum update -y && \
-    yum install -y gcc-c++ make curl && \
-    curl -sL https://rpm.nodesource.com/setup_14.x | bash - && \
-    yum install -y nodejs && \
-    yum clean all
+# Use the official Node.js image from the Docker Hub
+FROM node:14
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
